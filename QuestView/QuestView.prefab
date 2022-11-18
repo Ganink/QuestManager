@@ -408,7 +408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 92e3c68124e4347c4b390ee41cc98c3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 26fd9a183d6884e98918171ae79b7a04, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -542,6 +542,7 @@ MonoBehaviour:
   titleText: {fileID: 1464741695175194745}
   descriptionText: {fileID: 8940082479200280253}
   xpText: {fileID: 934649288723586532}
+  QuestDB: {fileID: 11400000, guid: 0df7c6913569544678f73862ba526039, type: 2}
 --- !u!1 &1390691667018287305
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 26280105b0fb94fa28eede3ae33c6d11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f13d82f578f194a968ce8a6cbfe2a83c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -837,7 +838,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 26280105b0fb94fa28eede3ae33c6d11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f13d82f578f194a968ce8a6cbfe2a83c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -4,13 +4,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class QuestView : MonoBehaviour
+public class QuestView : UIView
 {
     public static QuestView instance;
-    [SerializeField] private QuestModel Model;
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private TextMeshProUGUI xpText;
+    [SerializeField] private QuestDatabase QuestDB;
+
+    private QuestController controller;
+
+    private void Awake()
+    {
+        controller = new QuestController(QuestDB);
+    }
 
     public QuestView()
     {
@@ -21,20 +28,16 @@ public class QuestView : MonoBehaviour
     }
     private void OnEnable()
     {
+        controller.DetailQuestActive();
         InitializedPopup();
     }
 
 
     private void InitializedPopup()
     {
-        titleText.text = Model.TitleQuest;
-        descriptionText.text = Model.DescriptionQuest;
-        xpText.text = " XP: " + Model.xpReward;
-    }
-
-    public void SetPopup(QuestModel model)
-    {
-        this.Model = model;
-        InitializedPopup();
+        var model = controller.GetModel();
+        titleText.text = model.TitleQuest;
+        descriptionText.text = model.DescriptionQuest;
+        xpText.text = " XP: " + model.xpReward;
     }
 }
