@@ -532,13 +532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455bb897a4ec04196b1aeaf5325f9686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model:
-    TitleQuest: 
-    IDQuest: 0
-    DescriptionQuest: 
-    CompletedQuest: 0
-    xpReward: 0
-    Rewards: []
   titleText: {fileID: 1464741695175194745}
   descriptionText: {fileID: 8940082479200280253}
   xpText: {fileID: 934649288723586532}
@@ -660,6 +653,7 @@ GameObject:
   - component: {fileID: 3846475904424274673}
   - component: {fileID: 4638749846524454287}
   - component: {fileID: 9113479166414162627}
+  - component: {fileID: 4566634260067982260}
   m_Layer: 5
   m_Name: decline-button
   m_TagString: Untagged
@@ -770,6 +764,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4566634260067982260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045530596834458498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2db6ccc12ff8cc45b4d3c5cb09a7d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonType: 3
 --- !u!1 &3905555778260424537
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +789,7 @@ GameObject:
   - component: {fileID: 295172028323771296}
   - component: {fileID: 289232488728859753}
   - component: {fileID: 4989238556298624700}
+  - component: {fileID: 2708547449982566745}
   m_Layer: 5
   m_Name: accept-button
   m_TagString: Untagged
@@ -892,6 +900,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2708547449982566745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3905555778260424537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2db6ccc12ff8cc45b4d3c5cb09a7d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonType: 2
 --- !u!1 &4781503678616687584
 GameObject:
   m_ObjectHideFlags: 0

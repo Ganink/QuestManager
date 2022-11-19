@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestView : UIView
 {
@@ -30,6 +31,7 @@ public class QuestView : UIView
     {
         controller.DetailQuestActive();
         InitializedPopup();
+        InitializedButtons();
     }
 
 
@@ -39,5 +41,45 @@ public class QuestView : UIView
         titleText.text = model.TitleQuest;
         descriptionText.text = model.DescriptionQuest;
         xpText.text = " XP: " + model.xpReward;
+    }
+
+    private void InitializedButtons()
+    {
+        var buttons = gameObject.GetComponentsInChildren<Button>();
+        foreach (var item in buttons)
+        {
+            if (item.GetComponent<UIButton>())
+            {
+                Common.ButtonType currentBtnType;
+                Enum.TryParse(item.GetComponent<UIButton>().GetButtonType().ToString(), out currentBtnType);
+                SetButtons(item, currentBtnType);
+            }
+        }
+    }
+
+    private void SetButtons(Button item, Common.ButtonType buttonType)
+    {
+        switch (buttonType)
+        {
+            case Common.ButtonType.Close:
+                item.onClick.AddListener(OnClosePopup);
+                break;
+            case Common.ButtonType.Accept:
+                item.onClick.AddListener(OnAcceptQuest);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void OnAcceptQuest()
+    {
+        Debug.Log($"[QuestView]: Need logic to acept quest");
+        OnClosePopup();
+    }
+
+    private void OnClosePopup()
+    {
+        Destroy(this.gameObject);
     }
 }
