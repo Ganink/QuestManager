@@ -57,13 +57,11 @@ public class QuestView : UIView
         }
     }
 
-    private void SetButtons(Button item, Common.ButtonType buttonType)
+    public override void SetButtons(Button item, Common.ButtonType buttonType)
     {
+        base.SetButtons(item, buttonType);
         switch (buttonType)
         {
-            case Common.ButtonType.Close:
-                item.onClick.AddListener(OnClosePopup);
-                break;
             case Common.ButtonType.Accept:
                 item.onClick.AddListener(OnAcceptQuest);
                 break;
@@ -76,10 +74,5 @@ public class QuestView : UIView
     {
         Debug.Log($"[QuestView]: Need logic to acept quest");
         OnClosePopup();
-    }
-
-    private void OnClosePopup()
-    {
-        Destroy(this.gameObject);
     }
 }
