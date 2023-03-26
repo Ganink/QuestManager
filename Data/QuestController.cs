@@ -13,10 +13,10 @@ public class QuestController
 
     public void DetailQuestActive()
     {
-        var currentQuest = questDB.GetQuests().Find(t => t.GetQuestModel().CompletedQuest == false);
+        var currentQuest = UtilsManager.GetRemoteQuest(); //questDB.GetQuests().Find(t => t.GetQuestModel().CompletedQuest == false);
         if (currentQuest != null)
         {
-            var modelCopy = currentQuest.GetQuestModel();
+            var modelCopy = currentQuest;
             SetModel(modelCopy);
         }
     }

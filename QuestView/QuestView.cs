@@ -75,4 +75,6 @@ public class QuestView : UIView
         Debug.Log($"[QuestView]: Need logic to acept quest");
         OnClosePopup();
     }
+    
+    
 }
