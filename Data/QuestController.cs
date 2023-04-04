@@ -24,18 +24,18 @@ public class QuestController
     private static void PrivateLog(QuestModel model)
     {
         string titleQuest = model.TitleQuest;
-        int iDQuest = model.IDQuest;
+        int id = model.id;
         string descriptionQuest = model.DescriptionQuest;
-        bool completedQuest = model.CompletedQuest;
+        int levelRequired = model.levelRequired;
         int xpReward = model.xpReward;
         List<ItemSO> rewards = model.Rewards;
 
         Debug.Log(
             $"Quest details" +
             $"\ntitle quest: {titleQuest} " +
-            $"\nid : {iDQuest} " +
+            $"\nid : {id} " +
             $"\ndescription: {descriptionQuest} " +
-            $"\ncompleted: {completedQuest} " +
+            $"\nlevel required: {levelRequired} " +
             $"\nxp: {xpReward} " +
             $"\nrewards: {rewards} "
             );
@@ -43,8 +43,8 @@ public class QuestController
 
     public void CompleteCurrentQuest()
     {
-        var currentQuest = questDB.GetQuests().Find(t => t.GetQuestModel().CompletedQuest == false);
-        currentQuest.GetQuestModel().CompletedQuest = true;
+        var currentQuest = questDB.GetQuests().Find(t => t.GetQuestModel().levelRequired > 0);
+        currentQuest.GetQuestModel();
         DetailQuestActive();
     }
 
