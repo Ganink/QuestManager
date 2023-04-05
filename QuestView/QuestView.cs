@@ -18,6 +18,13 @@ public class QuestView : UIView
     private void Awake()
     {
         controller = new QuestController(QuestDB);
+        controller.DetailQuestActive();
+    }
+
+    private void Start()
+    {
+        InitializedPopup();
+        InitializedButtons();
     }
 
     public QuestView()
@@ -29,17 +36,15 @@ public class QuestView : UIView
     }
     private void OnEnable()
     {
-        controller.DetailQuestActive();
-        InitializedPopup();
-        InitializedButtons();
+        
     }
 
 
     private void InitializedPopup()
     {
         var model = controller.GetModel();
-        titleText.text = model.TitleQuest;
-        descriptionText.text = model.DescriptionQuest;
+        titleText.text = model.name;
+        descriptionText.text = model.description;
         xpText.text = " XP: " + model.xpReward;
     }
 

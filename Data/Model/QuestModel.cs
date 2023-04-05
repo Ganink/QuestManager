@@ -5,11 +5,11 @@ using UnityEngine;
 [Serializable]
 public class QuestModel
 {
-    public string TitleQuest;
-    public int IDQuest;
+    public int id;
+    public string name;
     [TextArea]
-    public string DescriptionQuest;
-    public bool CompletedQuest;
+    public string description;
+    public int levelRequired;
     public int xpReward;
     public List<ItemSO> Rewards;
 }

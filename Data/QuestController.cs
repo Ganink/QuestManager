@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestController 
+public class QuestController
 {
     private QuestDatabase questDB;
     private QuestModel model;
@@ -11,9 +11,10 @@ public class QuestController
         this.questDB = questDB;
     }
 
-    public void DetailQuestActive()
+    public async void DetailQuestActive()
     {
-        var currentQuest = UtilsManager.GetRemoteQuest(); //questDB.GetQuests().Find(t => t.GetQuestModel().CompletedQuest == false);
+        var currentQuest = await UtilsManager.GetRemoteQuest("https://api.jsonbin.io/v3/b/642dc469ace6f33a220560c6?meta=false"); // quest
+        //var currentQuest = UtilsManager.GetRemoteQuest(); //questDB.GetQuests().Find(t => t.GetQuestModel().CompletedQuest == false);
         if (currentQuest != null)
         {
             var modelCopy = currentQuest;
@@ -23,10 +24,10 @@ public class QuestController
 
     private static void PrivateLog(QuestModel model)
     {
-        string titleQuest = model.TitleQuest;
-        int iDQuest = model.IDQuest;
-        string descriptionQuest = model.DescriptionQuest;
-        bool completedQuest = model.CompletedQuest;
+        int iDQuest = model.id;
+        string titleQuest = model.name;
+        string descriptionQuest = model.description;
+        int levelRequired = model.levelRequired;
         int xpReward = model.xpReward;
         List<ItemSO> rewards = model.Rewards;
 
@@ -35,16 +36,16 @@ public class QuestController
             $"\ntitle quest: {titleQuest} " +
             $"\nid : {iDQuest} " +
             $"\ndescription: {descriptionQuest} " +
-            $"\ncompleted: {completedQuest} " +
+            $"\ncompleted: {levelRequired} " +
             $"\nxp: {xpReward} " +
             $"\nrewards: {rewards} "
-            );
+        );
     }
 
     public void CompleteCurrentQuest()
     {
-        var currentQuest = questDB.GetQuests().Find(t => t.GetQuestModel().CompletedQuest == false);
-        currentQuest.GetQuestModel().CompletedQuest = true;
+        var currentQuest = questDB.GetQuests().Find(t => t.GetQuestModel().levelRequired >= 1); // TODO
+        currentQuest.GetQuestModel();
         DetailQuestActive();
     }
 
@@ -56,6 +57,11 @@ public class QuestController
 
     public QuestModel GetModel()
     {
+        if (model == null)
+        {
+            DetailQuestActive();
+        }
+
         return model;
     }
 }
