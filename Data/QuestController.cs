@@ -13,11 +13,11 @@ public class QuestController
 
     public async void DetailQuestActive()
     {
-        var currentQuest = await UtilsManager.GetRemoteQuest("https://eu-api.backendless.com/31EF3CC2-4605-3945-FF40-F5959A1DB700/1C61130D-F9F4-4007-A5BB-410579464074/data/quests"); //questDB.GetQuests().Find(t => t.GetQuestModel().CompletedQuest == false);
+        var currentQuest = await RemoteConstants.QUESTS_GREENVILLEX;
         if (currentQuest != null)
         {
-            var modelCopy = currentQuest;
-            //SetModel(modelCopy);
+            var modelCopy = currentQuest.Find(t => t.id == 1);
+            SetModel(modelCopy);
         }
     }
 
