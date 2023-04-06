@@ -6,8 +6,8 @@ using UnityEngine;
 public class QuestModel
 {
     public int id;
-    public string TitleQuest;
-    [TextArea] public string DescriptionQuest;
+    public string name;
+    [TextArea] public string description;
     public int levelRequired;
     public int xpReward;
     public List<ItemSO> Rewards;

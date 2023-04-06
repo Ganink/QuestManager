@@ -11,21 +11,21 @@ public class QuestController
         this.questDB = questDB;
     }
 
-    public void DetailQuestActive()
+    public async void DetailQuestActive()
     {
-        var currentQuest = UtilsManager.GetRemoteQuest(); //questDB.GetQuests().Find(t => t.GetQuestModel().CompletedQuest == false);
+        var currentQuest = await UtilsManager.GetRemoteQuest("https://eu-api.backendless.com/31EF3CC2-4605-3945-FF40-F5959A1DB700/1C61130D-F9F4-4007-A5BB-410579464074/data/quests"); //questDB.GetQuests().Find(t => t.GetQuestModel().CompletedQuest == false);
         if (currentQuest != null)
         {
             var modelCopy = currentQuest;
-            SetModel(modelCopy);
+            //SetModel(modelCopy);
         }
     }
 
     private static void PrivateLog(QuestModel model)
     {
-        string titleQuest = model.TitleQuest;
+        string titleQuest = model.name;
         int id = model.id;
-        string descriptionQuest = model.DescriptionQuest;
+        string descriptionQuest = model.description;
         int levelRequired = model.levelRequired;
         int xpReward = model.xpReward;
         List<ItemSO> rewards = model.Rewards;
