@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestController
+public class QuestController 
 {
     private QuestDatabase questDB;
     private QuestModel model;
@@ -13,19 +13,18 @@ public class QuestController
 
     public async void DetailQuestActive()
     {
-        var currentQuest = await UtilsManager.GetRemoteQuest("https://api.jsonbin.io/v3/b/642dc469ace6f33a220560c6?meta=false"); // quest
-        //var currentQuest = UtilsManager.GetRemoteQuest(); //questDB.GetQuests().Find(t => t.GetQuestModel().CompletedQuest == false);
+        var currentQuest = await RemoteConstants.QUESTS_GREENVILLEX;
         if (currentQuest != null)
         {
-            var modelCopy = currentQuest;
+            var modelCopy = currentQuest.Find(t => t.id == 1);
             SetModel(modelCopy);
         }
     }
 
     private static void PrivateLog(QuestModel model)
     {
-        int iDQuest = model.id;
         string titleQuest = model.name;
+        int id = model.id;
         string descriptionQuest = model.description;
         int levelRequired = model.levelRequired;
         int xpReward = model.xpReward;
@@ -34,17 +33,17 @@ public class QuestController
         Debug.Log(
             $"Quest details" +
             $"\ntitle quest: {titleQuest} " +
-            $"\nid : {iDQuest} " +
+            $"\nid : {id} " +
             $"\ndescription: {descriptionQuest} " +
-            $"\ncompleted: {levelRequired} " +
+            $"\nlevel required: {levelRequired} " +
             $"\nxp: {xpReward} " +
             $"\nrewards: {rewards} "
-        );
+            );
     }
 
     public void CompleteCurrentQuest()
     {
-        var currentQuest = questDB.GetQuests().Find(t => t.GetQuestModel().levelRequired >= 1); // TODO
+        var currentQuest = questDB.GetQuests().Find(t => t.GetQuestModel().levelRequired > 0);
         currentQuest.GetQuestModel();
         DetailQuestActive();
     }
@@ -57,11 +56,6 @@ public class QuestController
 
     public QuestModel GetModel()
     {
-        if (model == null)
-        {
-            DetailQuestActive();
-        }
-
         return model;
     }
 }

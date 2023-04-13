@@ -18,13 +18,6 @@ public class QuestView : UIView
     private void Awake()
     {
         controller = new QuestController(QuestDB);
-        controller.DetailQuestActive();
-    }
-
-    private void Start()
-    {
-        InitializedPopup();
-        InitializedButtons();
     }
 
     public QuestView()
@@ -34,15 +27,22 @@ public class QuestView : UIView
             instance = this;
         }
     }
-    private void OnEnable()
+    private void Start()
     {
-        
+        controller.DetailQuestActive();
+        InitializedPopup();
+        InitializedButtons();
     }
 
 
     private void InitializedPopup()
     {
         var model = controller.GetModel();
+        while (string.IsNullOrEmpty(model.name))
+        {
+            Debug.Log("[QuestView]: waiting model");
+        }
+
         titleText.text = model.name;
         descriptionText.text = model.description;
         xpText.text = " XP: " + model.xpReward;
